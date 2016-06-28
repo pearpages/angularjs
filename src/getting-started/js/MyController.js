@@ -1,7 +1,7 @@
 angular.module('my-app')
-    .controller('MyController',[myController]);
+    .controller('MyController',['$http',myController]);
 
-function myController() {
+function myController($http) {
     var vm = this;
 
     var person = {
@@ -10,7 +10,16 @@ function myController() {
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Zayapa_%28Grapsus_grapsus%29%2C_Las_Bachas%2C_isla_Baltra%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-23%2C_DD_30.JPG/800px-Zayapa_%28Grapsus_grapsus%29%2C_Las_Bachas%2C_isla_Baltra%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-23%2C_DD_30.JPG'
     }
 
-    this.title = 'Hello World';
-    this.person = person;
+    vm.title = 'Hello World';
+    vm.person = person;
+    vm.person2;
+
+    vm.getData = function () {
+        $http.get('/mockup-data/data.json').then(function(response){
+            vm.person2 = response.data;
+        });
+
+        
+    };
     
 }

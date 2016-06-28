@@ -78,7 +78,15 @@ function myController() {
 
 ### $http Service
 
+Encapsulates HTTP communication (GET, POST, PUT, DELETE). $http is part of the angularjs core.
 
+$http returns a **promise**.
+
+Using GitHub API as an example
+
+1. Available from JavaScript in a browser
+2. Returns JSON
+3. No authentication or client key required 
 
 ---
 

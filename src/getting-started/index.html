@@ -1,27 +1,41 @@
 <html>
-    <head>
-        <script src="node_modules/angular/angular.js"></script>
-        <script src="js/my-app.js"></script>
-        <script src="js/MyController.js"></script>
-    </head>
-    <body ng-app="my-app">
-        <h1>Hello World</h1>
-        
-        <p>{{ 843 / 42 }}</p>
 
-        <div ng-controller="MyController as my">
-            {{my.title}}
+<head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="js/my-app.js"></script>
+    <script src="js/MyController.js"></script>
+</head>
 
+<body ng-app="my-app">
+    <h1>Hello World</h1>
+
+    <p>{{ 843 / 42 }}</p>
+
+    <div ng-controller="MyController as my">
+        {{my.title}}
+
+        <dl>
+            <dt>FirstName</dt>
+            <dd>{{my.person.firstName}}</dd>
+            <dt>LastName</dt>
+            <dd>{{my.person.lastName}}</dd>
+            <dt>Image</dt>
+            <!-- pay attention to ng-src directive for loading images -->
+            <dd><img ng-src="{{my.person.image}}" alt="Cool image"></dd>
+        </dl>
+
+        <button ng-click="my.getData()">Ajax something!</button>
+
+        <div ng-show="my.person2 !== undefined">
             <dl>
                 <dt>FirstName</dt>
-                <dd>{{my.person.firstName}}</dd>
+                <dd>{{my.person2.firstName}}</dd>
                 <dt>LastName</dt>
-                <dd>{{my.person.lastName}}</dd>
-                <dt>Image</dt>
-                <!-- pay attention to ng-src directive for loading images -->
-                <dd><img ng-src="{{my.person.image}}" alt="Cool image"></dd>
+                <dd>{{my.person2.lastName}}</dd>
             </dl>
-
         </div>
-    </body>
+
+    </div>
+</body>
+
 </html>
