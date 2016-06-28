@@ -24,7 +24,7 @@
             <dd><img ng-src="{{my.person.image}}" alt="Cool image"></dd>
         </dl>
 
-        <button ng-click="my.getData()">Ajax something!</button>
+        <button ng-click="my.getData()">Ajax something!</button> <button ng-click="my.getGithubUser('pearpages')">Get My User Profile</button>
 
         <div ng-show="my.person2 !== undefined">
             <dl>
@@ -33,6 +33,10 @@
                 <dt>LastName</dt>
                 <dd>{{my.person2.lastName}}</dd>
             </dl>
+        </div>
+
+        <div ng-show="my.user !== undefined">
+            {{my.user}}
         </div>
 
     </div>

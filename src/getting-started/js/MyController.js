@@ -13,13 +13,19 @@ function myController($http) {
     vm.title = 'Hello World';
     vm.person = person;
     vm.person2;
+    vm.user;
 
     vm.getData = function () {
         $http.get('/mockup-data/data.json').then(function(response){
             vm.person2 = response.data;
         });
-
-        
     };
+
+    vm.getGithubUser = function(user) {
+        $http.get("https://api.github.com/users/pearpages")
+            .then(function(response) {
+                vm.user = response.data;
+            });
+    }
     
 }
