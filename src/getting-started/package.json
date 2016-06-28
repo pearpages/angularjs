@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angularjs": "0.0.1"
+    "angular": "^1.5.7"
   }
 }
