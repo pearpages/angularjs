@@ -88,9 +88,91 @@ Using GitHub API as an example
 2. Returns JSON
 3. No authentication or client key required 
 
+```javascript
+vm.getGithubUser = function() {
+    if(vm.user !== undefined) {
+        var success = function () {
+            vm.user = response.data;
+        };
+
+        var error = function () {
+            // code
+        }
+
+        $http.get("https://api.github.com/users/"+vm.user)
+        .then(success,error);
+    }else{
+        alert('select one user please!');
+    }
+}
+```
+
+### Modules
+
+```javascript
+(function () {
+    var app = angular.module('my-app',[]);
+})();
+```
+
 ---
 
 ## Directives and Views
+
+```javascript
+// ng-model
+<input type="text" ng-model="vm.username" />
+```
+
+```javascript
+// ng-click
+<button ng-click="search(vm.username)">Click</button>
+```
+
+```javascript
+// ng-submit
+<form name="searchUser" ng-submit="search(username)">
+    <input type="search" required placeholder="Username to find" ng-model="username" />
+    <input type="submit" value="search" />
+</form>
+```
+
+```javascript
+// ng-repeat
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Stars</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="repo in vm.repos | orderBy: 'stargazers_count' : reverse = true">
+            <td>{{repo.name}}</td>
+            <td>{{repo.stargazers_count | number }}</td>
+            <td>{{repo.language}}</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+```javascript
+// filters
+// expression | filterName: parameter
+// currency, date, filter, josn, limitTo, lowercase, uppercase, number, orderBy
+
+```
+
+```javascript
+// ng-show, ng-hide
+```
+
+```javascript
+// ng-include
+```
+
+
 
 ---
 

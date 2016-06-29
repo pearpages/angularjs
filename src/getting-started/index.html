@@ -7,36 +7,59 @@
 </head>
 
 <body ng-app="my-app">
-    <h1>Hello World</h1>
+    <h1>App</h1>
 
     <p>{{ 843 / 42 }}</p>
 
-    <div ng-controller="MyController as my">
-        {{my.title}}
+    <div ng-controller="MyController as vm">
+        {{vm.title}}
 
         <dl>
             <dt>FirstName</dt>
-            <dd>{{my.person.firstName}}</dd>
+            <dd>{{vm.person.firstName}}</dd>
             <dt>LastName</dt>
-            <dd>{{my.person.lastName}}</dd>
+            <dd>{{vm.person.lastName}}</dd>
             <dt>Image</dt>
             <!-- pay attention to ng-src directive for loading images -->
-            <dd><img ng-src="{{my.person.image}}" alt="Cool image"></dd>
+            <dd><img width="100px" height="100px" ng-src="{{vm.person.image}}" alt="Cool image"></dd>
         </dl>
 
-        <button ng-click="my.getData()">Ajax something!</button> <button ng-click="my.getGithubUser('pearpages')">Get My User Profile</button>
+        <select ng-model="vm.user">
+            <option value="pearpages">pearpages</option>
+            <option value="johnpapa">johnpapa</option>
+        </select>
 
-        <div ng-show="my.person2 !== undefined">
+        <button ng-click="vm.getData()">Ajax something!</button> <button ng-click="vm.getGithubUser(vm.user)">Get User Profile</button>
+
+        <div ng-show="vm.person2 !== undefined">
             <dl>
                 <dt>FirstName</dt>
-                <dd>{{my.person2.firstName}}</dd>
+                <dd>{{vm.person2.firstName}}</dd>
                 <dt>LastName</dt>
-                <dd>{{my.person2.lastName}}</dd>
+                <dd>{{vm.person2.lastName}}</dd>
             </dl>
         </div>
 
-        <div ng-show="my.user !== undefined">
-            {{my.user}}
+        <div ng-show="vm.user !== undefined && vm.user.avatar_url !== undefined">
+            <img width="100px" height="100px" ng-src="{{vm.user.avatar_url}}" >
+            <pre>{{vm.user | json}}</pre>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stars</th>
+                        <th>Language</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="repo in vm.repos | orderBy: 'stargazers_count' : reverse = true">
+                        <td>{{repo.name}}</td>
+                        <td>{{repo.stargazers_count | number }}</td>
+                        <td>{{repo.language}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
