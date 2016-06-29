@@ -179,6 +179,33 @@ vm.getGithubUser = function() {
 
 ## Services
 
+```javascript
+// $timeout, $interval
+function startCountdown() {
+    // stop after 5 intervals;
+    // another good thing about $interval is that calls the $digest cycle
+    globalVar = $interval(decrementCountdown, 1000, vm.countdown);
+}
+
+// somewhre else in the code
+$interval.cancel(globalVar);
+```
+
+```javascript
+// $log methods
+// log, info, error, warn, debug
+vm.getGithubUser = function (user) {
+    $log.info("Searching for "+ user);
+    if (user !== undefined) {
+
+        $http.get("https://api.github.com/users/" + user)
+            .then(onUserComplete, onError);
+    } else {
+        alert('select one user please!');
+    }
+}
+```
+
 ---
 
 ## Routing
