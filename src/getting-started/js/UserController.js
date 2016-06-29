@@ -1,12 +1,16 @@
 (function() {
 
     angular.module('my-app')
-        .controller('UserController', ['$routeParams',UserController]);
+        .controller('UserController', ['$routeParams','$location',UserController]);
 
-        function UserController($routeParams) {
+        function UserController($routeParams,$location) {
 
             var vm = this;
 
-            this.message = "User page loaded for id " + $routeParams.username;
+            vm.message = "User page loaded for id " + $routeParams.username;
+            vm.gotoMain = function () {
+                $location.path('/main');
+            }
+
         }
 })();
