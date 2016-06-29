@@ -256,4 +256,19 @@ var onRepos = function (response) {
 
 ## Routing
 
+Manage different views in the application.
+
+- angular-route.js ```npm install --save angular-route```
+  - ["ngRoute"]
+- configure **$routeProvider**
+- setup a layout view with **ng-view**
+
+```javascript
+$routeProvider
+    .when('/main', {
+        templateUrl: 'main.html',
+        controller: 'MainController'
+    });
+```
+
 ---

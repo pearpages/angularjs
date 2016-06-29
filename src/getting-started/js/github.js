@@ -13,6 +13,7 @@
         }
 
         var getRepos = function(user) {
+            // returning a promise
             return $http.get(user.repos_url)
                 .then(function(response) {
                     return response.data;
