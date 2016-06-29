@@ -41,25 +41,7 @@
         </div>
 
         <div ng-show="vm.user !== undefined && vm.user.avatar_url !== undefined">
-            <img width="100px" height="100px" ng-src="{{vm.user.avatar_url}}" >
-            <pre>{{vm.user | json}}</pre>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Stars</th>
-                        <th>Language</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="repo in vm.repos | orderBy: 'stargazers_count' : reverse = true">
-                        <td>{{repo.name}}</td>
-                        <td>{{repo.stargazers_count | number }}</td>
-                        <td>{{repo.language}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <ng-include src="'/js/partials/repos.html'"></ng-include>
         </div>
 
     </div>

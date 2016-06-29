@@ -161,19 +161,20 @@ vm.getGithubUser = function() {
 // filters
 // expression | filterName: parameter
 // currency, date, filter, josn, limitTo, lowercase, uppercase, number, orderBy
-
 ```
 
-```javascript
-// ng-show, ng-hide
+```html
+<!-- ng-show, ng-hide -->
+<div ng-show="vm.user !== undefined && vm.user.avatar_url !== undefined">
+    <!-- more html -->
+</div>
 ```
 
-```javascript
-// ng-include
+```html
+<!-- ng-include -->
+<ng-include src="'/js/partials/repos.html'"></ng-include>
 ```
-
-
-
+ 
 ---
 
 ## Services
