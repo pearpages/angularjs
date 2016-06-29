@@ -1,9 +1,5 @@
 # Fundamentals
 
-## Introduction
-
----
-
 ## Controllers and Markup
 
 ---
