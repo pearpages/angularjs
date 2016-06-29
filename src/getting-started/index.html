@@ -3,6 +3,8 @@
 <head>
     <script src="node_modules/angular/angular.js"></script>
     <script src="js/my-app.js"></script>
+    <!-- order matters -->
+    <script src="js/github.js"></script>
     <script src="js/MyController.js"></script>
 </head>
 
@@ -44,7 +46,7 @@
             </dl>
         </div>
 
-        <div ng-show="vm.user !== undefined && vm.user.avatar_url !== undefined">
+        <div id="userDetails" ng-show="vm.user !== undefined && vm.user.avatar_url !== undefined">
             <ng-include src="'/js/partials/repos.html'"></ng-include>
         </div>
 

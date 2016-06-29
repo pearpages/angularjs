@@ -179,6 +179,12 @@ vm.getGithubUser = function() {
 
 ## Services
 
+They are very useful among other things for:
+
+- create reusable logic
+- create shared data
+- manage complexity
+
 ```javascript
 // $timeout, $interval
 function startCountdown() {
@@ -204,6 +210,46 @@ vm.getGithubUser = function (user) {
         alert('select one user please!');
     }
 }
+```
+
+```javascript
+// $location, $anchorScroll
+var onRepos = function (response) {
+    vm.repos = response.data;
+    $location.hash('userDetails'); // look for the html #id
+    $anchorScroll(); // scroll to there
+};
+```
+
+```javascript
+(function() {
+    angular.module('my-app')
+        .factory('github', ['$http',github]);
+
+    function github($http) {
+
+        var getUser = function(username) {
+            // returning a promise
+            return $http.get("https://api.github.com/users/" + user)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+
+        var getRepos = function(user) {
+            $http.get(user.repos_url)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+        
+        return {
+            getUser: getUser,
+            getRepos: getRepos
+        };
+    }
+
+})();
 ```
 
 ---
